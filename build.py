@@ -31,6 +31,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SHARED = ROOT / "_shared"
+SKILLS = ROOT / "skills"
 
 # The 11 quality dimensions, in rubric order. `key` is the fragment filename stem and the
 # suffix of the focused skill (ilities-<key>); `title` is the heading in the full rubric;
@@ -129,9 +130,9 @@ def target_skills():
     """(skill_dir, expected_rubric_text) for every skill present in the repo."""
     out = []
     for name in FLAGSHIPS:
-        if (ROOT / name).is_dir():
+        if (SKILLS / name).is_dir():
             out.append((name, build_full()))
-    for path in sorted(ROOT.glob("ilities-*")):
+    for path in sorted(SKILLS.glob("ilities-*")):
         if not path.is_dir():
             continue
         if path.name in FLAGSHIPS:
@@ -153,7 +154,7 @@ def main():
 
     stale, wrote = [], []
     for name, expected in target_skills():
-        rubric = ROOT / name / "references" / "rubric.md"
+        rubric = SKILLS / name / "references" / "rubric.md"
         current = rubric.read_text(encoding="utf-8") if rubric.exists() else None
         if args.check:
             if current != expected:
@@ -168,7 +169,7 @@ def main():
         if stale:
             print("Out of sync (run `python build.py`):")
             for n in stale:
-                print(f"  - {n}/references/rubric.md")
+                print(f"  - skills/{n}/references/rubric.md")
             sys.exit(1)
         print(f"In sync: all {len(target_skills())} skills.")
         return
@@ -176,7 +177,7 @@ def main():
     if wrote:
         print(f"Regenerated {len(wrote)} rubric(s):")
         for n in wrote:
-            print(f"  - {n}/references/rubric.md")
+            print(f"  - skills/{n}/references/rubric.md")
     else:
         print("Nothing to do: all rubrics already up to date.")
 

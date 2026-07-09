@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "ilities",
+  "displayName": "ilities",
+  "version": "0.1.0",
+  "description": "Intent-first code review skills for Claude Code.",
+  "author": {
+    "name": "Fabio Agosto"
+  },
+  "repository": "https://github.com/fabioagosto/ilities",
+  "homepage": "https://github.com/fabioagosto/ilities",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "code-review",
+    "intent-first",
+    "quality"
+  ]
+}

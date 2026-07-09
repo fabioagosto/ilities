@@ -1,0 +1,16 @@
+{
+  "name": "ilities",
+  "owner": {
+    "name": "Fabio Agosto"
+  },
+  "description": "Intent-first code review skills for Claude Code.",
+  "plugins": [
+    {
+      "name": "ilities",
+      "source": "./",
+      "description": "Intent-first code review: a full-rubric audit, a forward-writing guide, a dimension prioritizer, and 11 focused review lenses.",
+      "category": "review",
+      "tags": ["code-review", "intent-first", "quality", "skills"]
+    }
+  ]
+}
