@@ -51,8 +51,8 @@ Pin the goal before the code, and check you're still on it as you build.
 
 | Skill | What it does |
 |-------|--------------|
-| [`ilities-north-star`](skills/ilities-north-star) | Interrogate a fuzzy idea into a clear, checkable intent *before* any code exists — grill one question at a time, hand back a North Star brief. |
-| [`ilities-resection`](skills/ilities-resection) | Mid-build drift check — take a quick bearing on where the change stands versus its intent, and report on-course or drifted. |
+| [`ilities-north-star`](skills/ilities-north-star) | Interrogate a fuzzy idea into a clear, checkable intent *before* any code exists, critique one question at a time, hand back a North Star brief. |
+| [`ilities-resection`](skills/ilities-resection) | Mid-build drift check, take a quick bearing on where the change stands versus its intent, and report on-course or drifted. |
 
 ### Focused lenses
 
