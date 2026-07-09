@@ -7,7 +7,7 @@ description: >-
   review, audit, critique, or sanity-check a change or PR; asks "is this ready to
   merge / ship?"; asks "does this do what it should?"; or hands you a diff and asks
   what you think. (For steering code you are about to write, or a self-review before
-  you open your own PR, use ilities-guide instead: this skill reviews a change
+  you open your own PR, use ilities-azimuth instead: this skill reviews a change
   that already exists.) The distinguishing
   move is the intent gate: it catches scope creep, half-solved problems, and clean
   solutions to the wrong problem, which ordinary "is this code good?" review misses.
@@ -34,7 +34,7 @@ Reach for an audit whenever there is a change with a purpose worth checking it a
 a PR, a commit, a working-tree diff, a proposed design. Typical triggers: "review this,"
 "is this ready to merge," "does this actually solve X," "what do you think of this diff."
 (If the code does not exist yet, or you are checking your *own* work before opening a PR,
-that is `ilities-guide`: audit reviews a change that already exists.)
+that is `ilities-azimuth`: audit reviews a change that already exists.)
 
 For finding *bugs* in a diff mechanically, the `/code-review` command is the sharper
 tool and you can run it alongside. ilities is broader and intent-first: it asks

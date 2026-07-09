@@ -12,7 +12,7 @@ description: >-
   branches on, a public API or plugin seam, a parser or format reader, anything shaped like
   the first of several. Checks that extension points sit where change is genuinely expected
   and only there, that nothing is abstracted for a requirement no one has, and that the
-  obvious next case does not force a rewrite. Pairs with ilities-decide, which weighs
+  obvious next case does not force a rewrite. Pairs with ilities-lensatic, which weighs
   whether to spend simplicity on flexibility at all; for a full 11-dimension review use
   ilities. Intent-first: a flexibility-strong change that solves the wrong problem
   still fails here.
@@ -43,7 +43,7 @@ of several to come.
 
 For a full review across all 11 dimensions, use `ilities`; it runs the whole rubric
 and this same gate. For the prior question, whether this code should spend any simplicity
-buying flexibility at all, `ilities-decide` is the sharper tool; run it alongside when the
+buying flexibility at all, `ilities-lensatic` is the sharper tool; run it alongside when the
 trade itself is what is in doubt. This skill is intent-first: it asks whether the change
 bends where it will actually need to, not whether it bends everywhere it could.
 

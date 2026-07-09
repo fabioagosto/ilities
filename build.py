@@ -6,12 +6,15 @@ keep a copy of it inside each skill (which drifts the moment someone edits one c
 forgets the rest), the rubric lives once as small body-only fragments under _shared/,
 and this script assembles the right subset for each skill:
 
-  - Flagship skills (ilities, ilities-guide, ilities-decide) get the FULL rubric: the
+  - Flagship skills (ilities, ilities-azimuth, ilities-lensatic) get the FULL rubric: the
     intent gate, the scoring scale, all 11 dimensions, and the trade-offs.
   - Focused lens skills (ilities-<dimension>) get a FOCUSED rubric: the intent gate
     (which every skill runs first), the scoring scale, that skill's one dimension, and
     the trade-offs. About 80 lines instead of 194, so the reviewer loads only what the
     lens needs.
+  - Intent skills (ilities-north-star, ilities-resection) get the INTENT-ONLY slice: the
+    core idea and the intent gate, no dimensions and no scoring. These are the forward
+    intent tools; they interrogate the intent, they do not score it.
 
 Usage:
   python build.py           Regenerate references/rubric.md for every skill.
@@ -51,11 +54,18 @@ DIMENSIONS = [
 ]
 DIM_BY_KEY = {d["key"]: d for d in DIMENSIONS}
 
-# Skills that carry the full rubric. The bare `ilities` is the flagship review; guide and
-# decide run the same full rubric forward and for prioritization. These share the
+# Skills that carry the full rubric. The bare `ilities` is the flagship review; azimuth and
+# lensatic run the same full rubric forward and for prioritization. These share the
 # `ilities-` prefix with the focused lenses, so target_skills() skips them explicitly when
 # it globs for lenses.
-FLAGSHIPS = ["ilities", "ilities-guide", "ilities-decide"]
+FLAGSHIPS = ["ilities", "ilities-azimuth", "ilities-lensatic"]
+
+# Skills that carry the intent-only slice (core idea + intent gate). These are the forward
+# intent tools: north-star pins a fuzzy intent before code exists, resection checks an
+# in-flight change for drift against it. They interrogate the intent rather than scoring
+# quality, so they need the gate as their reference and nothing else. Like the flagships,
+# they share the `ilities-` prefix with the lenses and are skipped in the lens glob.
+INTENT_SKILLS = ["ilities-north-star", "ilities-resection"]
 
 GENERATED_NOTE = (
     "> **Generated file, do not edit directly.** This rubric is assembled from the shared\n"
@@ -67,7 +77,7 @@ GENERATED_NOTE = (
 FULL_PREAMBLE = (
     "The shared backbone for the ilities suite. It defines the **intent gate**, the\n"
     "**11 quality dimensions**, the **scoring scale**, and the **trade-off principles** that\n"
-    "`ilities`, `ilities-guide`, and `ilities-decide` all assess against."
+    "`ilities`, `ilities-azimuth`, and `ilities-lensatic` all assess against."
 )
 
 FULL_TOC = (
@@ -126,17 +136,38 @@ def build_focused(key):
     return "\n\n".join(parts) + "\n"
 
 
+def build_intent():
+    preamble = (
+        "The slice the forward intent skills need: the **core idea** (intent before quality)\n"
+        "and the **intent gate**. No dimensions, no scoring scale, no trade-offs — these skills\n"
+        "interrogate the intent, they do not score it. The gate is the finish line: keep going\n"
+        "until its blockers would pass. For the full 11-dimension rubric, see `ilities`."
+    )
+    parts = [
+        "# ilities Rubric: intent slice",
+        preamble,
+        GENERATED_NOTE,
+        section("## The core idea: intent before quality", frag("core-idea.md")),
+        section("## The intent gate", frag("intent-gate.md")),
+    ]
+    return "\n\n".join(parts) + "\n"
+
+
 def target_skills():
     """(skill_dir, expected_rubric_text) for every skill present in the repo."""
     out = []
     for name in FLAGSHIPS:
         if (SKILLS / name).is_dir():
             out.append((name, build_full()))
+    for name in INTENT_SKILLS:
+        if (SKILLS / name).is_dir():
+            out.append((name, build_intent()))
     for path in sorted(SKILLS.glob("ilities-*")):
         if not path.is_dir():
             continue
-        if path.name in FLAGSHIPS:
-            # ilities-guide / ilities-decide share the prefix but carry the full rubric.
+        if path.name in FLAGSHIPS or path.name in INTENT_SKILLS:
+            # Flagships (full rubric) and intent skills (intent-only slice) share the
+            # `ilities-` prefix with the lenses but are not dimensions; handled above.
             continue
         key = path.name[len("ilities-"):]
         if key not in DIM_BY_KEY:

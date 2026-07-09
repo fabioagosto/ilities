@@ -12,7 +12,7 @@ description: >-
   speculative generality, indirection that only forwards, cleverness that costs more clarity
   than it buys, and DRY pushed past where it helps. For a full 11-dimension review use
   ilities; for mechanically applying reuse and simplification cleanups /simplify is
-  the sharper tool and runs alongside; pairs with ilities-decide when simplicity trades
+  the sharper tool and runs alongside; pairs with ilities-lensatic when simplicity trades
   against flexibility. Intent-first: a clean, simplicity-strong change that solves the wrong
   problem still fails here.
 ---
@@ -40,7 +40,7 @@ for; or a DRY refactor that folds several blocks into one shared helper.
 
 For a full review across all 11 dimensions, use `ilities`; it runs the whole rubric
 and this same gate. For mechanically applying reuse and simplification cleanups, `/simplify`
-is the sharper tool, and it pairs with `ilities-decide` when simplicity genuinely trades
+is the sharper tool, and it pairs with `ilities-lensatic` when simplicity genuinely trades
 against flexibility. This skill is intent-first: it asks whether the change should exist in
 this shape at all, not only whether a line could be tidier.
 
@@ -123,7 +123,7 @@ Most important fix: <one thing>
   repeat are easy to read and change apart; one premature generalization couples code that
   only looked alike, and now every change fights the shared shape. An abstraction earns its
   place by paying for itself now: one real caller is a function, the pattern starts at the
-  third. When simplicity and flexibility genuinely pull apart, that is a `ilities-decide`
+  third. When simplicity and flexibility genuinely pull apart, that is a `ilities-lensatic`
   call, not a reflex to abstract.
 - **A finding names the code and its failure mode, never the author.** "This factory has one
   implementation and one caller, so the interface adds a hop the reader must trace without

@@ -1,5 +1,5 @@
 ---
-name: ilities-decide
+name: ilities-lensatic
 description: >-
   Decide which code-quality dimensions to concentrate effort on for a given change and
   which need only enough to clear the bar, since attention is finite and not every
@@ -10,12 +10,12 @@ description: >-
   this whenever the user asks "what should I optimize for," "is it worth
   abstracting this," "how much error handling does this need," "should I write
   tests for this," or is weighing simplicity against flexibility, speed against
-  readability, or robustness against shipping speed. Pairs with ilities-guide
+  readability, or robustness against shipping speed. Pairs with ilities-azimuth
   (which then builds to the chosen priorities) and ilities (which scores
   against them).
 ---
 
-# ilities Decide
+# ilities Lensatic
 
 Pick what this change should be *great* at, and where merely clearing the bar is fine.
 The rubric has 11 dimensions, and while every dimension that applies should still be
@@ -35,7 +35,7 @@ so you need to know precisely what each one is.
 Use it when the right engineering trade-off is genuinely unclear and the answer depends
 on context: "is it worth abstracting this," "how much error handling does this need,"
 "should I write tests for a throwaway script," "do I optimize this or ship it,"
-"simplicity or flexibility here." Also use it as the first step of `ilities-guide` when
+"simplicity or flexibility here." Also use it as the first step of `ilities-azimuth` when
 you are about to build something and want to choose priorities before writing.
 
 If the priorities are already obvious for the change at hand, skip this and just build.

@@ -2,7 +2,7 @@
 
 The shared backbone for the ilities suite. It defines the **intent gate**, the
 **11 quality dimensions**, the **scoring scale**, and the **trade-off principles** that
-`ilities`, `ilities-guide`, and `ilities-decide` all assess against.
+`ilities`, `ilities-azimuth`, and `ilities-lensatic` all assess against.
 
 > **Generated file, do not edit directly.** This rubric is assembled from the shared
 > source fragments in `_shared/` by `build.py`. To change a definition, edit the

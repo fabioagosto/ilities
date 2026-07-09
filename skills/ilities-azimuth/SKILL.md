@@ -1,5 +1,5 @@
 ---
-name: ilities-guide
+name: ilities-azimuth
 description: >-
   Steer new code so it passes an intent review by construction: state the change's
   intent in one sentence, keep scope contained to that intent, build in the 11
@@ -12,7 +12,7 @@ description: >-
   ilities: same rubric, applied while writing instead of after.
 ---
 
-# ilities Guide
+# ilities Azimuth
 
 Write the change so it would pass an intent review, instead of writing it and hoping
 review catches the gaps. Same rubric as `ilities`, run forward. The core
@@ -44,7 +44,7 @@ code will be read, changed, or relied on later.
    leans on Performance and Robustness; a public API on Flexibility and Consistency; a
    security-boundary change on Security and Correctness. This is about focus, not about
    deliberately letting a dimension slide. If the trade-offs are genuinely unclear (some
-   dimensions truly pull against each other), that is what `ilities-decide` is for;
+   dimensions truly pull against each other), that is what `ilities-lensatic` is for;
    use it, then come back.
 
 3. **Note what is explicitly out of scope.** The refactor you are tempted to do "while

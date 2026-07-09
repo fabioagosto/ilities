@@ -12,7 +12,8 @@ A suite of skills for **intent-first code review**. Most review asks *"is this c
 ```
 
 Then ask for a review and Claude picks the right skill, or invoke one directly — `ilities`
-for a full-rubric review, `ilities-security` (or any lens) for a single angle.
+for a full-rubric review, `ilities-security` (or any lens) for a single angle, or
+`ilities-north-star` to pin the intent before you build.
 
 ### Install manually
 
@@ -25,23 +26,33 @@ git clone https://github.com/fabioagosto/ilities.git
 cp -r ilities/skills/ilities* ~/.claude/skills/
 
 # Or just the flagships
-cp -r ilities/skills/ilities ilities/skills/ilities-guide ilities/skills/ilities-decide ~/.claude/skills/
+cp -r ilities/skills/ilities ilities/skills/ilities-north-star ilities/skills/ilities-azimuth ilities/skills/ilities-lensatic ~/.claude/skills/
 ```
 
 Restart Claude Code if it is already running.
 
 ## The Suite of Skills
 
-Three flagship skills work across the whole rubric; eleven focused skills each drill into
-one lens when you want to point your review at a single thing.
+The suite runs like a land-nav mission — know where you're going, hold the bearing, then check
+you got there. Three flagship skills work across the whole rubric, two forward-intent skills pin
+and hold the goal before any review, and eleven focused lenses each drill into a single dimension.
 
 ### Flagships
 
 | Skill | What it does |
 |-------|--------------|
 | [`ilities`](skills/ilities) | Review an existing change against the full rubric: intent gate → score all 11 dimensions → verdict. |
-| [`ilities-guide`](skills/ilities-guide) | The rubric run *forward*, write a change that passes the intent review by construction. |
-| [`ilities-decide`](skills/ilities-decide) | Decide which dimensions to concentrate on for a given change, since attention is finite. |
+| [`ilities-azimuth`](skills/ilities-azimuth) | The rubric run *forward*, write a change that passes the intent review by construction. |
+| [`ilities-lensatic`](skills/ilities-lensatic) | The compass that picks which lenses to apply: decide which dimensions to concentrate on, since attention is finite. |
+
+### Forward intent
+
+Pin the goal before the code, and check you're still on it as you build.
+
+| Skill | What it does |
+|-------|--------------|
+| [`ilities-north-star`](skills/ilities-north-star) | Interrogate a fuzzy idea into a clear, checkable intent *before* any code exists — grill one question at a time, hand back a North Star brief. |
+| [`ilities-resection`](skills/ilities-resection) | Mid-build drift check — take a quick bearing on where the change stands versus its intent, and report on-course or drifted. |
 
 ### Focused lenses
 
