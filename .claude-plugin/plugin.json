@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "ilities",
   "displayName": "ilities",
-  "version": "0.1.0",
-  "description": "Intent-first code review skills for Claude Code.",
+  "version": "0.2.1",
+  "description": "Intent-first code review skills for Claude Code, plus bundled dev-craft companion skills.",
   "author": {
     "name": "Fabio Agosto"
   },

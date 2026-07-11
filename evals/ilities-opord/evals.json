@@ -1,0 +1,31 @@
+{
+  "skill": "ilities-opord",
+  "skill_path": "skills/ilities-opord/SKILL.md",
+  "notes": "Fresh-PR and retrofit evals both describe the SAME real change — the companion-tier addition — frozen as fixtures/companion-tier.diff so the eval is reproducible without live git state. The retrofit variant additionally supplies a weak existing description to rewrite. Discriminating assertions are scope-out and honest-verification: baseline runs write good descriptions but tend to omit an explicit Scope-Out list and to report only green checks without naming what went unverified.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "opord-fresh-pr",
+      "prompt": "I'm about to open a PR for the change captured in fixtures/companion-tier.diff (it adds a bundled 'companion' tier to the ilities plugin). Write the PR description for me — reviewers should be able to tell what's going on. Save it as pr_description.md.",
+      "assertions": [
+        "states_single_sentence_mission: contains a clear one-sentence statement of what the PR as a whole does, not just a change list",
+        "explains_why: explains the problem/motivation behind the change, not only what changed",
+        "explicit_scope_out: explicitly names what is OUT of scope / deliberately deferred, not just what is included",
+        "honest_verification: reports how the change was verified AND honestly names anything not verified",
+        "derived_from_actual_diff: reflects the real content of the diff (companion skills q-route/opord/pontoon, COMPANION_SKILLS in build.py, docs/manifest changes) rather than generic filler"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "opord-retrofit",
+      "prompt": "A teammate has a PR up for the change in fixtures/companion-tier.diff. The current PR description is just: 'added new skills and misc fixes'. Reviewers are complaining they can't tell what this PR is actually for or whether it's safe to merge. Rewrite the description properly. Save it as pr_description.md.",
+      "assertions": [
+        "states_single_sentence_mission: contains a clear one-sentence statement of what the PR as a whole does",
+        "explains_why: explains the motivation, directly addressing the reviewers' 'what is this for?' complaint",
+        "explicit_scope_out: explicitly names what is OUT of scope / deliberately deferred",
+        "honest_verification: reports what was verified and names unverified gaps honestly, addressing 'is it safe to merge?'",
+        "derived_from_actual_diff: evidently derived from reading the real diff (names the actual skills and build changes), not paraphrased from the bad one-liner"
+      ]
+    }
+  ]
+}

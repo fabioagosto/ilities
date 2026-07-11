@@ -67,6 +67,12 @@ FLAGSHIPS = ["ilities", "ilities-azimuth", "ilities-lensatic"]
 # they share the `ilities-` prefix with the lenses and are skipped in the lens glob.
 INTENT_SKILLS = ["ilities-north-star", "ilities-resection"]
 
+# Companion skills: bundled dev-craft how-tos that ship in the suite but are NOT
+# intent-first review skills — they have no rubric to assemble. They share the `ilities-`
+# prefix (so they read as suite members) but carry no dimension, so the lens glob must skip
+# them or the unknown-dimension guard would abort the build. Nothing is generated for them.
+COMPANION_SKILLS = ["ilities-q-route", "ilities-opord", "ilities-pontoon"]
+
 GENERATED_NOTE = (
     "> **Generated file, do not edit directly.** This rubric is assembled from the shared\n"
     "> source fragments in `_shared/` by `build.py`. To change a definition, edit the\n"
@@ -165,9 +171,10 @@ def target_skills():
     for path in sorted(SKILLS.glob("ilities-*")):
         if not path.is_dir():
             continue
-        if path.name in FLAGSHIPS or path.name in INTENT_SKILLS:
+        if path.name in FLAGSHIPS or path.name in INTENT_SKILLS or path.name in COMPANION_SKILLS:
             # Flagships (full rubric) and intent skills (intent-only slice) share the
             # `ilities-` prefix with the lenses but are not dimensions; handled above.
+            # Companion skills are bundled how-tos with no rubric at all; nothing to emit.
             continue
         key = path.name[len("ilities-"):]
         if key not in DIM_BY_KEY:

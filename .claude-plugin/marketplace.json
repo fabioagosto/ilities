@@ -8,7 +8,7 @@
     {
       "name": "ilities",
       "source": "./",
-      "description": "Intent-first code review: a full-rubric audit, a forward-writing guide, a dimension prioritizer, and 11 focused review lenses.",
+      "description": "Intent-first code review: a full-rubric audit, a forward-writing guide, a dimension prioritizer, and 11 focused review lenses — plus ilities-q-route, a bundled dev-tooling companion.",
       "category": "review",
       "tags": ["code-review", "intent-first", "quality", "skills"]
     }

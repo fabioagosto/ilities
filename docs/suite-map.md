@@ -29,6 +29,18 @@ The 11 quality dimensions, each its own focused skill, named for what it is:
 `ilities-lensatic` is the compass that tells you *which of these lenses* to point at a given
 change.
 
+## Companion tier (bundled, off-rubric)
+
+Not every skill in the plugin is a review skill. Companion skills ship alongside the suite as
+bundled dev-tooling how-tos — they carry the `ilities-` prefix so they read as members, but
+they have **no rubric** and score nothing. `build.py` skips them (see `COMPANION_SKILLS`).
+
+| Skill | Metaphor | What it is | Reach for it when | Status |
+|-------|----------|------------|-------------------|--------|
+| **`ilities-q-route`** | a swept, safe channel through mined waters | **Not a review lens** — a dev-tooling how-to: run an app's LLM calls on your own Claude subscription during **local dev only**, with the "don't stray into production" boundary built into the metaphor | "use my Claude subscription for the app in dev", "avoid a second API bill just for dev", "wire the Agent SDK as an LLM provider" | **built** |
+| **`ilities-opord`** | the operations order — mission and commander's intent, issued before execution | A writing companion: draft the PR description / commit body as a **statement of intent** (Mission · Intent · Scope In/Out · Execution · Verification) so the intent gate has something to gate against | "write the PR description", "draft the commit message for this branch", "make this reviewable" | **built** |
+| **`ilities-pontoon`** | the pontoon bridge — load-bearing for the mission, dismantled without a trace | A wiring pattern: build any temporary dev-only integration so the unwire is one module delete + reverting greppable `TEMP:` tagged hooks; the removal map is designed at wire time | "this is just for dev", "temporary until X ships", "we'll rip this out later", "remove the scaffolding" | **built** |
+
 ## The mission, end to end
 
 The names aren't decoration — run in order, they're a literal land-nav sequence:
@@ -47,4 +59,6 @@ All three landed in this pass:
 2. ✅ **Naming pass** — `decide → lensatic`, `guide → azimuth` (all cross-references updated).
 3. ✅ **Added `ilities-resection`** — the mid-flight drift check.
 
-`python build.py --check` is green: all 16 skills in sync.
+`python build.py --check` is green: all 16 review skills in sync (the companions —
+`ilities-q-route`, `ilities-opord`, `ilities-pontoon` — carry no rubric, so they are
+bundled but not build-managed; see `COMPANION_SKILLS`).

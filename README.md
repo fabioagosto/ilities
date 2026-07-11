@@ -74,6 +74,16 @@ ship?", "is this maintainable?", "are the edge cases covered?") rather than a fu
 | [`ilities-consistency`](skills/ilities-consistency) | Does it fit the codebase? |
 | [`ilities-observability`](skills/ilities-observability) | When it breaks in production, can we tell what happened? |
 
+### Bundled companions
+
+Not review lenses — dev-craft how-tos that ship alongside the suite and feed into it.
+
+| Skill | What it does |
+|-------|--------------|
+| [`ilities-opord`](skills/ilities-opord) | The *operations order*: write the PR description as a statement of intent — Mission, Intent, Scope In/Out, Execution, Verification — so the intent gate has something to gate against. |
+| [`ilities-pontoon`](skills/ilities-pontoon) | The *pontoon bridge*: wire any temporary dev-only integration so removal is one module delete plus reverting greppable `TEMP:` tagged hooks — the demolition designed at wire time. |
+| [`ilities-q-route`](skills/ilities-q-route) | A *swept, safe channel through mined waters*: run an app's LLM calls on **your own** Claude subscription during **local dev only** — a good model without a second per-token bill, with the "don't stray into production" boundary built in. |
+
 ## Contributing
 
 - To change a rubric definition, edit the fragment under `_shared/` and run `python

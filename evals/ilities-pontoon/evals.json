@@ -1,0 +1,36 @@
+{
+  "skill": "ilities-pontoon",
+  "skill_path": "skills/ilities-pontoon/SKILL.md",
+  "notes": "Two directions: wire a removable scaffold into a clean app, and unwire an existing untagged one. Run each against a COPY of the named fixture so the source stays pristine. Caveat on discrimination: both prompts here still hint at removability ('trivially removable' / 'every trace'), which is what the skill exists to inject — so a strong baseline can pass too. The skill's sharper edge shows on prompts that DON'T say 'make it removable' (e.g. a bare 'add a mock for now'); consider adding such a variant. The unwire fixture (payments-app fakepay) is deliberately an ANTI-pattern: untagged, and it invaded the permanent path via a fraud-check bypass in checkout.py — the fraud_conditional_restored assertion is the sneakiest tendril to catch.",
+  "evals": [
+    {
+      "id": 2,
+      "name": "pontoon-wire-fake-notifier",
+      "fixture": "fixtures/notifier-app",
+      "prompt": "Copy the app from fixtures/notifier-app into a working directory and work only in that copy. The app sends notifications through a provider seam (notifier/providers.py — console and smtp). SMTP creds aren't provisioned yet, so I want a fake in-memory notifier for local dev that records sent messages so I can exercise the signup flow. This is temporary — we'll rip it out the moment real creds land, so it must be trivially removable. Wire it in and write removal.md explaining how removal will work.",
+      "assertions": [
+        "fake_in_own_module: the fake notifier's logic lives in its own new file, not inline in providers.py",
+        "hooks_tagged_greppable: every touch point added to pre-existing files carries one consistent greppable marker (e.g. a scaffold-specific TEMP: tag) so a single grep finds the complete removal map",
+        "permanent_path_intact: console and smtp behavior is unchanged; modifications to pre-existing files are limited to small delegating hooks; selecting console/smtp back needs no code change",
+        "unwire_documented: a written removal procedure exists (delete module, revert hooks) including the trigger condition (real SMTP creds landing)",
+        "fake_notifier_works: records sent messages in memory and is registered so the signup flow can be exercised with it selected"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "pontoon-unwire-fakepay",
+      "fixture": "fixtures/payments-app",
+      "prompt": "Copy the app from fixtures/payments-app into a working directory and work only in that copy. A while back someone hacked a dev-only 'fakepay' payment gateway into this service so checkout could be tested without live Stripe creds. The real gateway is live now and fakepay has to be removed completely — every trace. Remove it, and write removal_report.md listing everything you found and removed.",
+      "assertions": [
+        "module_deleted: payments/fakepay.py is deleted",
+        "factory_branch_removed: the fakepay branch in gateway.py get_gateway() is removed",
+        "settings_entry_removed: 'fakepay' is removed from VALID_GATEWAYS in settings.py",
+        "fraud_conditional_restored: the 'if gateway.name != \"fakepay\"' guard in checkout.py is removed so run_fraud_check runs unconditionally (the sneakiest tendril)",
+        "test_env_pin_handled: tests/test_checkout.py no longer pins PAYMENT_GATEWAY=fakepay (removed, rewritten, or deleted with justification)",
+        "faker_dep_removed: the faker line is removed from requirements.txt (only fakepay used it)",
+        "readme_section_removed: the README's fakepay local-dev section is removed or rewritten",
+        "report_complete: removal_report.md lists the touch points found and removed"
+      ]
+    }
+  ]
+}
