@@ -191,7 +191,7 @@ def _options(model: str, system_prompt: str | None = None):
 def generate(prompt: str, model: str | None = None, max_tokens: int = 2000,
              system_prompt: str | None = None) -> str:
     # model: resolve from env so you can flip Opus↔Sonnet per-run to survive rate
-    # limits (cheaper Sonnet as the generic default; Manuript defaults this to opus).
+    # limits (cheaper Sonnet as the generic default; pick Opus if quality matters more).
     model = model or os.environ.get("MY_APP_MODEL", "sonnet")
     # max_tokens: accepted for interface parity; the SDK single-shot has no
     # output-token cap, so it is not enforced. Return type here is str for
@@ -287,33 +287,42 @@ write session state. `setting_sources=[]` skips filesystem config discovery. If
 that volume is shared or persisted, treat it as sensitive: session transcripts
 can contain prompt/response content.
 
-## Worked example: Manuript (implemented + E2E-verified)
+## Worked example: a FastAPI app with a provider seam (implemented + E2E-verified)
 
-Manuript (Python/FastAPI, `bookreview/`) has the ideal seam and this pattern is
-wired there as a removable scaffold, and **verified end-to-end with a live
-subscription token**: a real Knowledge-Graph extraction ran through the provider
-on Opus and returned 20 entities / 53 relationships with clean 200s and zero 401s,
-exercising the worker-thread bridge under an actual `BackgroundTasks` loop. The two
-transferable lessons:
+The reference implementation lives in a Python/FastAPI manuscript-analysis app with
+exactly the seam described above (an `LLMProvider` class with OpenAI, Anthropic, and
+Ollama implementations), where this pattern is wired as a removable scaffold and
+**verified end-to-end with a live subscription token**: a real knowledge-graph
+extraction ran through the provider on Opus and returned 20 entities / 53
+relationships with clean 200s and zero 401s, exercising the worker-thread bridge
+under an actual `BackgroundTasks` loop. The two transferable lessons:
 
-- **Your app's contract may return a response object, not a bare `str`.** Manuript's
-  `LLMProvider.generate(prompt, max_tokens=2500)` returns an `LLMResponse` dataclass
+- **Your app's contract may return a response object, not a bare `str`.** That app's
+  `LLMProvider.generate(prompt, max_tokens=2500)` returns a small response dataclass
   (`.text/.model/.provider`), so the adapter wraps the SDK text in that; match
   whatever your seam expects.
 - **The worker-thread bridge is load-bearing when `generate()` runs on a thread
-  with a live loop.** Manuript's KG extraction runs the *sync* analyzer inside an
-  *async* `BackgroundTasks` coroutine, so `generate()` executes under a running loop,
+  with a live loop.** The extraction runs the *sync* analyzer inside an *async*
+  `BackgroundTasks` coroutine, so `generate()` executes under a running loop,
   the exact case `asyncio.run()` can't handle.
 
-Reference map (all under `# TEMP:agentsdk` tags, for a quick skim):
-`bookreview/llm_provider_agentsdk.py` holds `AgentSdkProvider` + the bridge +
-`ANTHROPIC_API_KEY` scrub + `CLAUDE_CONFIG_DIR` + `is_agentsdk_available()`; a lazy
-factory branch in `llm_provider.py`; `"agentsdk"` added to
-`VALID_PROVIDERS`/`LLMProviderType` and an availability entry in
-`get_available_providers()` (settings.py); the UI gate flows via `api/main.py`
-`enrichment_available` and `ensure_provider_available()` in `api/routes/utils.py`.
-Flip with `set_llm_provider_setting('agentsdk')`, extract, confirm no 401; unwire by
-deleting the module + reverting the tags + dropping `claude-agent-sdk`.
+Reference map, by role (every touch point under one `# TEMP:agentsdk` tag, so a
+single grep lists them all):
+
+- **The adapter module** (new file): the provider class, the worker-thread bridge,
+  the `ANTHROPIC_API_KEY` scrub, the `CLAUDE_CONFIG_DIR` setup, and an
+  `is_available()` check that reports true only when the token is set and the SDK
+  imports.
+- **The provider factory**: one lazy-import branch that returns the adapter when
+  the provider setting names it.
+- **The provider registry**: the new name added to the validated provider list /
+  enum, and an availability entry wherever the app enumerates providers.
+- **The UI gate**: whatever endpoint tells the frontend "an LLM provider is
+  configured" reads the same availability check, so the feature unlocks.
+
+Flip the provider setting to the adapter, run a real feature, confirm no 401;
+unwire by deleting the module, reverting the tagged hooks, and dropping
+`claude-agent-sdk` from the dependencies.
 
 ## Gotchas checklist
 
