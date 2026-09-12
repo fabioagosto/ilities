@@ -1,4 +1,4 @@
-"""Fake payment gateway for local development — records charges in memory."""
+"""Fake payment gateway for local development: records charges in memory."""
 
 from faker import Faker
 

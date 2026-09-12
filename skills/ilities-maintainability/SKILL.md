@@ -3,17 +3,15 @@ name: ilities-maintainability
 description: >-
   Maintainability-only review of a change: run the intent gate first, then judge one thing
   deeply, will this be cheap to change in six months? Use when the user wants a
-  maintainability-focused read ("will this be a pain to maintain", "is this too coupled",
-  "is this doing too much", "is this cohesive", "how hard will this be to change later",
-  "is there hidden state here"), or when a change touches a surface where future edits get
-  expensive even if they just said "review this": a new module or class, a function quietly
-  growing several jobs, a refactor, a fresh abstraction, shared mutable state, or code many
-  callers already lean on. Checks whether each unit does one well-defined thing, whether
-  coupling stays minimal and explicit, whether state is visible rather than hidden, and
-  whether a likely later edit stays contained instead of rippling across unrelated files.
-  For a full 11-dimension review use ilities, and any general "is this ready to
-  merge" review belongs there too. Intent-first: a clean, maintainable-looking change that
-  solves the wrong problem still fails here.
+  maintainability-focused read ("will this be a pain to maintain", "is this too coupled", "is
+  this doing too much", "is this cohesive", "how hard will this be to change later", "is there
+  hidden state here"), or when a change touches a surface where future edits get expensive even
+  if they just said "review this": a new module or class, a function quietly growing several
+  jobs, shared mutable state, or code many callers lean on. Checks whether each unit does one
+  well-defined thing, whether coupling stays minimal and explicit, whether state is visible
+  rather than hidden, and whether a likely edit stays contained. For a full 11-dimension review
+  use ilities, and any general "is this ready to merge" review belongs there too. Intent-first:
+  a clean, maintainable-looking change that solves the wrong problem still fails here.
 ---
 
 # ilities: Maintainability

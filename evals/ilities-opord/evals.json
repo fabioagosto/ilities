@@ -1,12 +1,12 @@
 {
   "skill": "ilities-opord",
   "skill_path": "skills/ilities-opord/SKILL.md",
-  "notes": "Fresh-PR and retrofit evals both describe the SAME real change — the companion-tier addition — frozen as fixtures/companion-tier.diff so the eval is reproducible without live git state. The retrofit variant additionally supplies a weak existing description to rewrite. Discriminating assertions are scope-out and honest-verification: baseline runs write good descriptions but tend to omit an explicit Scope-Out list and to report only green checks without naming what went unverified.",
+  "notes": "Fresh-PR and retrofit evals both describe the SAME real change (the companion-tier addition), frozen as fixtures/companion-tier.diff so the eval is reproducible without live git state. The retrofit variant additionally supplies a weak existing description to rewrite. Discriminating assertions are scope-out and honest-verification: baseline runs write good descriptions but tend to omit an explicit Scope-Out list and to report only green checks without naming what went unverified.",
   "evals": [
     {
       "id": 0,
       "name": "opord-fresh-pr",
-      "prompt": "I'm about to open a PR for the change captured in fixtures/companion-tier.diff (it adds a bundled 'companion' tier to the ilities plugin). Write the PR description for me — reviewers should be able to tell what's going on. Save it as pr_description.md.",
+      "prompt": "I'm about to open a PR for the change captured in fixtures/companion-tier.diff (it adds a bundled 'companion' tier to the ilities plugin). Write the PR description for me: reviewers should be able to tell what's going on. Save it as pr_description.md.",
       "assertions": [
         "states_single_sentence_mission: contains a clear one-sentence statement of what the PR as a whole does, not just a change list",
         "explains_why: explains the problem/motivation behind the change, not only what changed",

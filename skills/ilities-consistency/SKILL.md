@@ -1,20 +1,17 @@
 ---
 name: ilities-consistency
 description: >-
-  Consistency-only review of a change: run the intent gate first, then judge one thing
-  deeply, does it fit the codebase? Use when the user wants a fit review ("does this fit our
-  conventions", "is this consistent with the rest of the codebase", "am I reinventing
-  something we already have", "does this match how we do X elsewhere", "is this the
-  established pattern here"), or when a change lands where fit is what's at stake even if
-  they just said "review this": a new helper that may already exist, a second way to do data
-  access / error handling / logging / config the repo already does one way, a module whose
-  naming or structure or directory placement departs from its siblings, or a dependency that
-  duplicates one already in the tree. Checks that the change follows the patterns,
-  conventions, and layout already established, and does not open a parallel path to something
-  the codebase already has. For a full 11-dimension review use ilities; for
-  mechanically flagging a reinvented or duplicated helper, /code-review and /simplify are
-  sharper and run alongside. Intent-first: a consistency-strong change that solves the wrong
-  problem still fails here.
+  Consistency-only review of a change: run the intent gate first, then judge one thing deeply,
+  does it fit the codebase? Use when the user wants a fit review ("does this fit our
+  conventions", "is this consistent with the rest of the codebase", "am I reinventing something
+  we already have", "does this match how we do X elsewhere"), or when a change lands where fit
+  is what's at stake even if they just said "review this": a new helper that may already exist,
+  a second way to do data access or logging the repo already does one way, a module named unlike
+  its siblings, a dependency duplicating one in the tree. Checks that the change follows
+  established patterns and layout, and opens no parallel path to what the codebase already has.
+  For a full 11-dimension review use ilities; for mechanically flagging a reinvented or
+  duplicated helper, /code-review and /simplify are sharper and run alongside. Intent-first: a
+  consistency-strong change that solves the wrong problem still fails here.
 ---
 
 # ilities: Consistency

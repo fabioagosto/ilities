@@ -1,19 +1,17 @@
 ---
 name: ilities-observability
 description: >-
-  Observability-only review of a change: run the intent gate first, then judge one thing
-  deeply, when it breaks in production can we tell what happened? Use when the user wants
-  an observability review ("can we debug this in prod", "are the logs good enough here",
-  "is this error message actionable", "will we know if this breaks", "is this observable",
-  "does this swallow the error"), or when a change touches a surface where a silent failure
-  would sting even if they just said "review this": error handling and catch blocks,
-  retries and fallbacks, background jobs, queues and cron, outbound network and I/O calls,
-  third-party integrations, or data pipelines where a dropped record leaves no trace.
-  Checks for meaningful logs, metrics, and errors at the boundaries that matter, catch
-  blocks that keep the cause instead of losing it, and error messages an on-call engineer
-  could actually act on. For a full 11-dimension review use ilities, which also
-  owns a general "is this ready to merge?" question. Intent-first: an observability-strong
-  change that solves the wrong problem still fails here.
+  Observability-only review of a change: run the intent gate first, then judge one thing deeply,
+  when it breaks in production can we tell what happened? Use when the user wants an
+  observability review ("can we debug this in prod", "are the logs good enough here", "is this
+  error message actionable", "will we know if this breaks", "is this observable", "does this
+  swallow the error"), or when a change touches a surface where a silent failure would sting
+  even if they just said "review this": catch blocks, retries and fallbacks, background jobs,
+  outbound network and I/O calls, or data pipelines where a dropped record leaves no trace.
+  Checks for meaningful logs, metrics, and errors at the boundaries that matter, catch blocks
+  that keep the cause, and errors an on-call engineer could act on. For a full 11-dimension
+  review use ilities, which also owns a general "is this ready to merge?" question.
+  Intent-first: an observability-strong change that solves the wrong problem still fails here.
 ---
 
 # ilities: Observability

@@ -1,20 +1,17 @@
 ---
 name: ilities-simplicity
 description: >-
-  Simplicity-only review of a change: run the intent gate first, then judge one thing
-  deeply, is this the least code that fully solves the problem? Use when the user asks
-  whether something is over-engineered or too complex, whether it could be simpler, whether
-  they really need this abstraction, whether this is YAGNI, whether they are over-abstracting
-  this, or whether there is a simpler way, or when a change adds structure even if they just
-  said "review this": a new base class or interface, a wrapper or factory, layers of
-  indirection, generic or configurable machinery, config knobs nobody asked for, premature
-  parameterization, or a heavy DRY refactor that unifies code which only looked alike. Weighs
-  speculative generality, indirection that only forwards, cleverness that costs more clarity
-  than it buys, and DRY pushed past where it helps. For a full 11-dimension review use
-  ilities; for mechanically applying reuse and simplification cleanups /simplify is
-  the sharper tool and runs alongside; pairs with ilities-lensatic when simplicity trades
-  against flexibility. Intent-first: a clean, simplicity-strong change that solves the wrong
-  problem still fails here.
+  Simplicity-only review of a change: run the intent gate first, then judge one thing deeply, is
+  this the least code that fully solves the problem? Use when the user asks whether something is
+  over-engineered or too complex, whether it could be simpler, whether they really need this
+  abstraction, or whether this is YAGNI, or when a change adds structure even if they just said
+  "review this": a new base class or interface, a wrapper or factory, generic or configurable
+  machinery, config knobs nobody asked for, or a DRY refactor that unifies code which only
+  looked alike. Weighs speculative generality, indirection that only forwards, and cleverness
+  that costs more clarity than it buys. For a full 11-dimension review use ilities; for
+  mechanically applying reuse and simplification cleanups /simplify is sharper and runs
+  alongside; pairs with ilities-lensatic when simplicity trades against flexibility.
+  Intent-first: a simplicity-strong change that solves the wrong problem still fails here.
 ---
 
 # ilities: Simplicity

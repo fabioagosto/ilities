@@ -1,20 +1,17 @@
 ---
 name: ilities-readability
 description: >-
-  Readability-only review of a change: run the intent gate first, then judge one thing
-  deeply, can a teammate understand this without the author explaining it? Use when the user
-  wants a clarity-focused review ("is this readable", "is this clear", "can someone else
-  follow this", "are these names good", "is this too nested", "would a teammate understand
-  this without me explaining it"), or when a change lands on a surface where the next reader
-  is what matters even if they just said "review this": dense or cryptic naming, deeply
-  nested or branchy control flow, comments that narrate the code instead of its reasons,
-  commented-out blocks, or new code written in a style the surrounding module does not use.
-  Checks that names say what things are and do, that control flow stays shallow enough to
-  follow, that comments explain why rather than what, and that the change reads like the code
-  around it. For a full 11-dimension review use ilities; this lens answers only
-  whether the change is clear to the next reader, and defers any "is this ready to merge"
-  call to that fuller review. Intent-first: a clean, readability-strong change that solves
-  the wrong problem still fails here.
+  Readability-only review of a change: run the intent gate first, then judge one thing deeply,
+  can a teammate understand this without the author explaining it? Use when the user wants a
+  clarity-focused review ("is this readable", "is this clear", "can someone else follow this",
+  "are these names good", "is this too nested", "would a teammate understand this without me
+  explaining it"), or when a change lands where the next reader is what matters even if they
+  just said "review this": cryptic naming, deeply nested control flow, comments that narrate the
+  code instead of its reasons, or code in a style the module does not use. Checks that names say
+  what things are and do, that control flow stays shallow, that comments explain why rather than
+  what, and that the change reads like the code around it. For a full 11-dimension review use
+  ilities, which owns any "is this ready to merge" call. Intent-first: a clean,
+  readability-strong change that solves the wrong problem still fails here.
 ---
 
 # ilities: Readability

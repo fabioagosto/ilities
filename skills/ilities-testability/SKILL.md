@@ -1,19 +1,17 @@
 ---
 name: ilities-testability
 description: >-
-  Testability-only review of a change: run the intent gate first, then judge one thing
-  deeply, can the behavior be verified, and is it? Use when the user wants a test-focused
-  review ("is this tested", "are these tests any good", "do the tests cover the new
-  behavior", "can this even be tested", "is this testable", "are these tests too coupled to
-  the implementation"), or when a change adds or alters behavior worth checking even if they
-  just said "review this": new logic or branches with no test, a bug fix with no regression
-  test, a refactor whose tests reach into private internals, or code wired so tightly to a
-  database, clock, or network client that it cannot be exercised without standing up the
-  whole system. Checks that new behavior is covered at the right level, that tests assert
-  observable behavior rather than implementation detail, and that dependencies are
-  injectable and side effects isolated. For a full 11-dimension review use ilities;
-  a general "is this ready to merge" review defers to it. Intent-first: a well-tested change
-  that solves the wrong problem still fails here.
+  Testability-only review of a change: run the intent gate first, then judge one thing deeply,
+  can the behavior be verified, and is it? Use when the user wants a test-focused review ("is
+  this tested", "are these tests any good", "do the tests cover the new behavior", "is this
+  testable", "are these tests too coupled to the implementation"), or when a change alters
+  behavior worth checking even if they just said "review this": new logic with no test, a bug
+  fix with no regression test, tests that reach into private internals, or code wired so tightly
+  to a database, clock, or network that it cannot be exercised alone. Checks that new behavior
+  is covered at the right level, that tests assert observable behavior rather than
+  implementation detail, and that dependencies are injectable. For a full 11-dimension review
+  use ilities; a general "is this ready to merge" review defers to it. Intent-first: a
+  well-tested change that solves the wrong problem still fails here.
 ---
 
 # ilities: Testability

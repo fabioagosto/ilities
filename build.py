@@ -68,7 +68,7 @@ FLAGSHIPS = ["ilities", "ilities-azimuth", "ilities-lensatic"]
 INTENT_SKILLS = ["ilities-north-star", "ilities-resection"]
 
 # Companion skills: bundled dev-craft how-tos that ship in the suite but are NOT
-# intent-first review skills — they have no rubric to assemble. They share the `ilities-`
+# intent-first review skills; they have no rubric to assemble. They share the `ilities-`
 # prefix (so they read as suite members) but carry no dimension, so the lens glob must skip
 # them or the unknown-dimension guard would abort the build. Nothing is generated for them.
 COMPANION_SKILLS = ["ilities-q-route", "ilities-opord", "ilities-pontoon"]
@@ -145,7 +145,7 @@ def build_focused(key):
 def build_intent():
     preamble = (
         "The slice the forward intent skills need: the **core idea** (intent before quality)\n"
-        "and the **intent gate**. No dimensions, no scoring scale, no trade-offs — these skills\n"
+        "and the **intent gate**. No dimensions, no scoring scale, no trade-offs: these skills\n"
         "interrogate the intent, they do not score it. The gate is the finish line: keep going\n"
         "until its blockers would pass. For the full 11-dimension rubric, see `ilities`."
     )

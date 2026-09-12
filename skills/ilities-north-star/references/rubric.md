@@ -1,7 +1,7 @@
 # ilities Rubric: intent slice
 
 The slice the forward intent skills need: the **core idea** (intent before quality)
-and the **intent gate**. No dimensions, no scoring scale, no trade-offs — these skills
+and the **intent gate**. No dimensions, no scoring scale, no trade-offs: these skills
 interrogate the intent, they do not score it. The gate is the finish line: keep going
 until its blockers would pass. For the full 11-dimension rubric, see `ilities`.
 

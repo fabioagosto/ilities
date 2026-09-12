@@ -1,20 +1,17 @@
 ---
 name: ilities-reliability
 description: >-
-  Reliability-only review of a change: run the intent gate first, then judge one thing
-  deeply, does it degrade gracefully? Use when the user wants a robustness-focused review
-  ("is this robust", "will this hold up under load", "what happens if this gets retried",
-  "is this idempotent", "does this fail gracefully", "could this run out of memory or spin
-  forever", "will this scale"), or when a change touches a surface where things go wrong or
-  grow even if they just said "review this": retry and timeout logic, loops or pagination
-  over unbounded data, queues, background jobs, external or network calls, caching, memory
-  and connection allocation, error-handling paths. Checks that code fails loudly on
-  programmer error and safely on user or environment error, avoids unbounded
-  loops/queries/memory, stays idempotent wherever a retry can reach it, and caps resource
-  use as load and data grow. For a full 11-dimension review use ilities; for
-  line-by-line correctness and efficiency hunting, /code-review is sharper and runs
-  alongside. Intent-first: a reliability-strong change that solves the wrong problem still
-  fails here.
+  Reliability-only review of a change: run the intent gate first, then judge one thing deeply,
+  does it degrade gracefully? Use when the user wants a robustness-focused review ("is this
+  robust", "will this hold up under load", "what happens if this gets retried", "is this
+  idempotent", "does this fail gracefully", "could this run out of memory or spin forever"), or
+  when a change touches a surface where things go wrong or grow even if they just said "review
+  this": retry and timeout logic, pagination over unbounded data, queues, network calls,
+  connection pools. Checks that code fails loudly on programmer error and safely on user or
+  environment error, avoids unbounded loops and memory, stays idempotent wherever a retry can
+  reach it, and caps resource use as load grows. For a full 11-dimension review use ilities; for
+  line-by-line correctness hunting, /code-review is sharper and runs alongside. Intent-first: a
+  reliability-strong change that solves the wrong problem still fails here.
 ---
 
 # ilities: Reliability

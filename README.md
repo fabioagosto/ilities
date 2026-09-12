@@ -11,7 +11,7 @@ A suite of skills for **intent-first code review**. Most review asks *"is this c
 /plugin install ilities@ilities
 ```
 
-Then ask for a review and Claude picks the right skill, or invoke one directly — `ilities`
+Then ask for a review and Claude picks the right skill, or invoke one directly: `ilities`
 for a full-rubric review, `ilities-security` (or any lens) for a single angle, or
 `ilities-north-star` to pin the intent before you build.
 
@@ -33,7 +33,7 @@ Restart Claude Code if it is already running.
 
 ## The Suite of Skills
 
-The suite runs like a land-nav mission — know where you're going, hold the bearing, then check
+The suite runs like a land-nav mission: know where you're going, hold the bearing, then check
 you got there. Three flagship skills work across the whole rubric, two forward-intent skills pin
 and hold the goal before any review, and eleven focused lenses each drill into a single dimension.
 
@@ -76,13 +76,13 @@ ship?", "is this maintainable?", "are the edge cases covered?") rather than a fu
 
 ### Bundled companions
 
-Not review lenses — dev-craft how-tos that ship alongside the suite and feed into it.
+Not review lenses: dev-craft how-tos that ship alongside the suite and feed into it.
 
 | Skill | What it does |
 |-------|--------------|
-| [`ilities-opord`](skills/ilities-opord) | The *operations order*: write the PR description as a statement of intent — Mission, Intent, Scope In/Out, Execution, Verification — so the intent gate has something to gate against. |
-| [`ilities-pontoon`](skills/ilities-pontoon) | The *pontoon bridge*: wire any temporary dev-only integration so removal is one module delete plus reverting greppable `TEMP:` tagged hooks — the demolition designed at wire time. |
-| [`ilities-q-route`](skills/ilities-q-route) | A *swept, safe channel through mined waters*: run an app's LLM calls on **your own** Claude subscription during **local dev only** — a good model without a second per-token bill, with the "don't stray into production" boundary built in. |
+| [`ilities-opord`](skills/ilities-opord) | The *operations order*: write the PR description as a statement of intent (Mission, Intent, Scope In/Out, Execution, Verification) so the intent gate has something to gate against. |
+| [`ilities-pontoon`](skills/ilities-pontoon) | The *pontoon bridge*: wire any temporary dev-only integration so removal is one module delete plus reverting greppable `TEMP:` tagged hooks, the demolition designed at wire time. |
+| [`ilities-q-route`](skills/ilities-q-route) | A *swept, safe channel through mined waters*: run an app's LLM calls on **your own** Claude subscription during **local dev only**, a good model without a second per-token bill, with the "don't stray into production" boundary built in. |
 
 ## Contributing
 
@@ -91,6 +91,9 @@ Not review lenses — dev-craft how-tos that ship alongside the suite and feed i
 - To change a skill's process or output format, edit its `SKILL.md` directly (only the
   rubric is generated).
 - `python build.py --check` must pass before a change merges.
+- `python check_skills.py` must pass too: it fails on any skill description over 1024
+  characters (Claude Code truncates there, and the tail is the routing text) or a `name`
+  that does not match its directory.
 
 ## License
 

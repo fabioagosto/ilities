@@ -2,18 +2,15 @@
 name: ilities-performance
 description: >-
   Performance-only review of a change: run the intent gate first, then judge one question
-  deeply, is it fast enough for its actual load and no more optimized than it needs to be?
-  Use when the user wants a performance-focused read ("is this fast enough", "is there an
-  N+1 here", "will this be slow at scale", "is this a hot path", "why is this slow", "am I
-  over-optimizing this", "does this do redundant work in the loop"), or when a change
-  touches a performance-sensitive surface even if they just said "review this": a query
-  issued inside a loop, a hot path or request handler under load, nested iteration over a
-  collection that can grow, a batch or scheduled job, a data structure picked against its
-  access pattern, a cache added by hand. Checks for accidental N+1s, full-table scans, work
-  repeated per iteration, structures that fit how the code reads and writes, and the
-  opposite failure, micro-optimization that costs readability for no measured gain. For a
-  full 11-dimension review use ilities; for line-by-line efficiency cleanups,
-  /code-review and /simplify are sharper and run alongside. Intent-first: a
+  deeply, is it fast enough for its actual load and no more optimized than it needs to be? Use
+  when the user wants a performance-focused read ("is this fast enough", "is there an N+1 here",
+  "will this be slow at scale", "why is this slow", "am I over-optimizing this"), or when a
+  change touches a performance-sensitive surface even if they just said "review this": a query
+  inside a loop, a hot path under load, nested iteration over a growing collection, a structure
+  picked against its access pattern, a hand-rolled cache. Checks for accidental N+1s, full-table
+  scans, work repeated per iteration, and the opposite failure, micro-optimization that costs
+  readability for no gain. For a full 11-dimension review use ilities; for line-by-line
+  efficiency cleanups, /code-review and /simplify are sharper and run alongside. Intent-first: a
   performance-strong change that solves the wrong problem still fails here.
 ---
 

@@ -1,19 +1,17 @@
 ---
 name: ilities-correctness
 description: >-
-  Correctness-only review of a change: run the intent gate first, then judge one thing
-  deeply, does it do the right thing, including at the edges? Use when the user wants a
-  correctness review ("is this correct", "does this handle the edge cases", "what happens on
-  empty / null input", "any off-by-one here", "will this break on malformed input", "check
-  the error handling on this", "did I miss a failure path"), or when a change touches logic
-  whose edges are easy to get wrong even if they just said "review this": parsing and input
-  handling, loops and indexing, boundary and range checks, retries and fallbacks, state
-  transitions, date/time and arithmetic, pagination, concurrency or ordering assumptions.
-  Checks that empty, null, boundary, and malformed inputs are handled, that error and failure
-  paths are caught rather than swallowed, that off-by-one and boundary conditions hold, and
-  that timing and race assumptions are sound. For a full 11-dimension review use
-  ilities; for line-by-line bug hunting, /code-review is sharper and runs alongside.
-  Intent-first: a correctness-strong change that solves the wrong problem still fails here.
+  Correctness-only review of a change: run the intent gate first, then judge one thing deeply,
+  does it do the right thing, including at the edges? Use when the user wants a correctness
+  review ("is this correct", "does this handle the edge cases", "what happens on empty / null
+  input", "any off-by-one here", "will this break on malformed input", "check the error handling
+  on this", "did I miss a failure path"), or when a change touches logic whose edges are easy to
+  get wrong even if they just said "review this": parsing and input handling, loops and
+  indexing, date/time arithmetic, concurrency. Checks that empty, null, boundary, and malformed
+  inputs are handled, that failure paths are caught rather than swallowed, and that off-by-one
+  and race assumptions hold. For a full 11-dimension review use ilities; for line-by-line bug
+  hunting, /code-review is sharper and runs alongside. Intent-first: a correctness-strong change
+  that solves the wrong problem still fails here.
 ---
 
 # ilities: Correctness

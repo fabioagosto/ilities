@@ -4,7 +4,7 @@ Checkout and payment-gateway service.
 
 ## Local development
 
-Set `PAYMENT_GATEWAY=fakepay` to run checkout without live Stripe credentials —
+Set `PAYMENT_GATEWAY=fakepay` to run checkout without live Stripe credentials:
 charges are recorded in memory instead of hitting the gateway.
 
 ## Production

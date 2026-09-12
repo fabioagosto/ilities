@@ -17,6 +17,12 @@ jobs:
       - name: Rubrics are in sync with _shared/
         run: python build.py --check
 
+      # Claude Code truncates a skill description at 1024 characters, and the tail
+      # is the routing text. Fail on any over-limit description or a name that
+      # does not match its directory, so the skill cannot ship silently mis-routed.
+      - name: Skill frontmatter is within limits
+        run: python check_skills.py
+
       # House rule: no em dashes or en dashes anywhere. This matches only the
       # en dash (U+2013) and em dash (U+2014) by codepoint, so arrows are fine.
       - name: No em or en dashes

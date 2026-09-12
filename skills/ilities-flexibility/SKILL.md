@@ -1,21 +1,17 @@
 ---
 name: ilities-flexibility
 description: >-
-  Flexibility-only review of a change: run the intent gate first, then judge one thing
-  deeply, can the likely next change be made without a rewrite? Use when the user wants an
-  extensibility review ("is this extensible", "will this handle the next change", "how hard
-  is it to add another case later", "should I build in an extension point here"), or is
-  second-guessing an abstraction ("am I over-abstracting for the future", "is this flexible
-  enough"), or when a change lands on a surface where the next variation is easy to predict
-  even if they just said "review this": a switch or if/else over a type that keeps growing, a
-  new provider / adapter / handler behind an interface, a config or schema other code
-  branches on, a public API or plugin seam, a parser or format reader, anything shaped like
-  the first of several. Checks that extension points sit where change is genuinely expected
-  and only there, that nothing is abstracted for a requirement no one has, and that the
-  obvious next case does not force a rewrite. Pairs with ilities-lensatic, which weighs
-  whether to spend simplicity on flexibility at all; for a full 11-dimension review use
-  ilities. Intent-first: a flexibility-strong change that solves the wrong problem
-  still fails here.
+  Flexibility-only review of a change: run the intent gate first, then judge one thing deeply,
+  can the likely next change be made without a rewrite? Use when the user wants an extensibility
+  review ("is this extensible", "how hard is it to add another case later", "should I build in
+  an extension point here"), or is second-guessing an abstraction ("am I over-abstracting for
+  the future", "is this flexible enough"), or when a change lands where the next variation is
+  easy to predict even if they just said "review this": a switch over a type that keeps growing,
+  a new adapter behind an interface, anything shaped like the first of several. Checks that
+  extension points sit only where change is genuinely expected, and that the obvious next case
+  needs no rewrite. Pairs with ilities-lensatic, which weighs whether to spend simplicity on
+  flexibility at all; for a full 11-dimension review use ilities. Intent-first: a
+  flexibility-strong change that solves the wrong problem still fails here.
 ---
 
 # ilities: Flexibility
